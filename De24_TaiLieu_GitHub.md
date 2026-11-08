@@ -1,6 +1,5 @@
 # Đề 24 – Hệ thống bán vé sự kiện và kiểm soát cổng
 
-Bản nháp sơ đồ Use Case, sơ đồ cơ sở dữ liệu và phân công công việc (theo yêu cầu đề gốc).
 
 ## 1. Sơ đồ Use Case
 
@@ -174,16 +173,15 @@ erDiagram
     VE ||--o{ CHUYEN_NHUONG : "lich_su_chuyen"
 ```
 
-**Ghi chú:** `NGUOI_DUNG` là bảng phụ trợ cần thiết vì các bảng gốc tham chiếu nhiều ID người dùng. Các trường còn lại giữ nguyên tên/cấu trúc chính của đề. `ghe_id` là tùy chọn đối với sự kiện không đánh số ghế. `don_ve.ma_giam_gia` trong đề là mã dạng chuỗi, chưa phải khóa ngoại.
 
 ## 3. Bảng phân công
 
-| Thành viên (giả định 4 người) | Phụ trách chính | Công việc cụ thể | Sản phẩm bàn giao |
+| Thành viên  | Phụ trách chính | Công việc cụ thể | Sản phẩm bàn giao |
 |---|---|---|---|
-| **TV1 – Backend & CSDL** | Thiết kế hệ thống, nghiệp vụ vé | Thiết kế CSDL và quan hệ; API sự kiện, giữ chỗ 10 phút, đơn vé; giao dịch chống bán quá số lượng, khóa ghế; mã giảm giá, chuyển nhượng và đổi QR; tạo dữ liệu mẫu | ERD, SQL migration/seed, API tài liệu và kiểm thử giao dịch |
-| **TV2 – App Admin (quản trị)** | Android Java + XML – quản lý | CRUD sự kiện, loại vé, sơ đồ khu/hàng/ghế, mã giảm giá và vé mời; dashboard đã bán/còn; báo cáo doanh thu và lượt vào cổng theo giờ, vé không dùng | Mã nguồn Admin, màn hình quản trị, báo cáo và demo |
-| **TV3 – Soát vé & đồng bộ** | Android Java + XML – chế độ cổng, kết hợp Backend | Quét QR online/offline; tải trước danh sách vào SQLite; đánh dấu vé đã dùng và lưu log cục bộ; đồng bộ theo lô; phối hợp TV1 triển khai kiểm tra quét trùng hai cổng và trả thông báo xung đột | Module scanner, SQLite, API đồng bộ, kịch bản kiểm thử 2 cổng mất mạng |
-| **TV4 – App Client (Flutter)** | Giao diện người mua | Duyệt, lọc, xem chi tiết sự kiện; chọn loại vé, số lượng và ghế; đồng hồ giữ chỗ 10 phút; mã giảm giá/tổng tiền; đơn vé, QR riêng từng vé và lưu offline; chuyển nhượng qua số điện thoại | Mã nguồn Flutter, các luồng mua vé, lưu vé offline và demo |
+| Trần Tuấn Tú - 241A010591 – Backend & CSDL** | Thiết kế hệ thống, nghiệp vụ vé | Thiết kế CSDL và quan hệ; API sự kiện, giữ chỗ 10 phút, đơn vé; giao dịch chống bán quá số lượng, khóa ghế; mã giảm giá, chuyển nhượng và đổi QR; tạo dữ liệu mẫu | ERD, SQL migration/seed, API tài liệu và kiểm thử giao dịch |
+| Nguyễn Thanh Tiến - 231A010705 – App Admin (quản trị)** | Android Java + XML – quản lý | CRUD sự kiện, loại vé, sơ đồ khu/hàng/ghế, mã giảm giá và vé mời; dashboard đã bán/còn; báo cáo doanh thu và lượt vào cổng theo giờ, vé không dùng | Mã nguồn Admin, màn hình quản trị, báo cáo và demo |
+| Đỗ Nhật Long - 241A010052 – Soát vé & đồng bộ** | Android Java + XML – chế độ cổng, kết hợp Backend | Quét QR online/offline; tải trước danh sách vào SQLite; đánh dấu vé đã dùng và lưu log cục bộ; đồng bộ theo lô; phối hợp TV1 triển khai kiểm tra quét trùng hai cổng và trả thông báo xung đột | Module scanner, SQLite, API đồng bộ, kịch bản kiểm thử 2 cổng mất mạng |
+| Lê Thiên Nga - 253A010012 – App Client (Flutter)** | Giao diện người mua | Duyệt, lọc, xem chi tiết sự kiện; chọn loại vé, số lượng và ghế; đồng hồ giữ chỗ 10 phút; mã giảm giá/tổng tiền; đơn vé, QR riêng từng vé và lưu offline; chuyển nhượng qua số điện thoại | Mã nguồn Flutter, các luồng mua vé, lưu vé offline và demo |
 
 
 ## 4. Ghi chú kỹ thuật quan trọng
